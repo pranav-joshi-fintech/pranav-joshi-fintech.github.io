@@ -1,0 +1,26 @@
+{
+  "sectionHeading": "About Me",
+  "bio": "I spend my time balancing the mathematical precision of Waterloo with the corporate realities of Laurier. I build systems that perform, analyze frameworks that fail, and prefer to let the net outcomes speak for themselves. Complexity is simply an invitation to find order.",
+  "monologue": "\"Value is rarely found in the noise. It sits quietly at the intersection of rigorous quantification and strategic execution.\"",
+  "degrees": [
+    {
+      "major": "Mathematics",
+      "institution": "University of Waterloo",
+      "color": "yellow"
+    },
+    {
+      "major": "Business Administration",
+      "institution": "Wilfrid Laurier University",
+      "color": "purple"
+    }
+  ],
+  "socials": {
+    "Email": "mailto:your.email@uwaterloo.ca",
+    "LinkedIn": "#",
+    "Github": "#",
+    "YouTube": "#"
+  },
+  "ctaText": "Explore Framework",
+  "swipeHintText": "Swipe horizontally →",
+  "showProjects": true
+}

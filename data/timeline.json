@@ -1,0 +1,59 @@
+{
+  "topShowcaseProjectIds": ["01", "02"],
+  "projects": [
+    {
+      "id": "01",
+      "category": "Quantitative Finance",
+      "title": "Arbitrage Engine",
+      "details": "An autonomous execution framework designed to identify transient micro-inefficiencies across decentralized order books. Built because existing open-source alternatives lacked mathematical rigor.",
+      "stack": "C++ / Python",
+      "imgUrl": "https://images.unsplash.com/photo-1642543492481-44e81e3914a7?auto=format&fit=crop&w=600&q=80",
+      "displayDate": "AUG 2025",
+      "internalDate": "2025-08-01",
+      "actionUrl": "https://github.com"
+    },
+    {
+      "id": "02",
+      "category": "Graph Theory",
+      "title": "Network Topology Optimization",
+      "details": "Algorithmic reduction of routing overhead. Applied custom graph partitioning to reduce worst-case latency profiles.",
+      "stack": "Pure Mathematics",
+      "imgUrl": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&q=80",
+      "displayDate": "NOV 2025",
+      "internalDate": "2025-11-01"
+    }
+  ],
+  "experiences": [
+    {
+      "role": "Quantitative Analyst Intern",
+      "organization": "Capital Markets Group / Toronto, ON",
+      "details": "Quantified structural inefficiencies within options books. Engineered hedging corrections using high-dimensional pricing matrices.",
+      "displayDate": "JAN 2026 – APR 2026",
+      "internalDate": "2026-01-01",
+      "verificationUrl": "#",
+      "nestedProjects": [
+        {
+          "title": "Option Pricing Matrix Optimizer",
+          "details": "Accelerated calculation speeds of analytical pricing primitives via tailored SIMD vector maps.",
+          "stack": "C++",
+          "displayDate": "FEB 2026",
+          "internalDate": "2026-02-15"
+        }
+      ]
+    },
+    {
+      "role": "Corporate Strategy Consultant",
+      "organization": "Laurier Consulting Group",
+      "details": "Advised an early-stage B2B logistics enterprise on defensive capital allocations. Modeled variable operational cash-burn scenarios to ensure structural resilience.",
+      "displayDate": "MAY 2025 – AUG 2025",
+      "internalDate": "2025-05-01"
+    },
+    {
+      "role": "Co-Author: 'Stochastic Methods'",
+      "organization": "Undergraduate Research Assistantship",
+      "details": "Addressed discrete order arrival constraints using continuous-time Markov models. Structured analytical proofs.",
+      "displayDate": "FALL 2025",
+      "internalDate": "2025-09-01"
+    }
+  ]
+}

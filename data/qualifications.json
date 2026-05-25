@@ -1,0 +1,57 @@
+{
+  "distinctionsHeading": "Notable distinctions",
+  "educationHeading": "Education Matrix",
+  "distinctions": [
+    {
+      "icon": "",
+      "year": "2027",
+      "title": "Putnam Mathematical Competition",
+      "detail": "Institutional Top Placement, Individual Honor Roll.",
+      "verificationUrl": "https://example.com"
+    },
+    {
+      "icon": "",
+      "year": "2024",
+      "title": "President's Gold Scholarship",
+      "detail": "Maintained for exceptional academic performance.",
+      "verificationUrl": ""
+    },
+    {
+      "icon": "https://upload.wikimedia.org/wikipedia/en/thumb/6/6e/University_of_Waterloo_seal.svg/1280px-University_of_Waterloo_seal.svg.png",
+      "year": "2023",
+      "title": "Laurier Case Competition",
+      "detail": "First Place, Strategic Innovation Bracket.",
+      "verificationUrl": "#"
+    }
+  ],
+  "educationTracks": [
+    {
+      "icon": "C:/Users/joshi/Documents/Coding/transition_summer/portfolio-root-11/images/UW_logo",
+      "focusArea": "Advanced Calculus & Linear Algebra",
+      "completionDate": "June, 2027",
+      "scope": "Rigorous multivariate optimization primitives, high-dimensional maps. (Waterloo)",
+      "syllabusUrl": "https://example.com"
+    },
+    {
+      "icon": "https://realwebsite.com/waterloo_logo_64x64",
+      "focusArea": "Combinatorics & Optimization",
+      "completionDate": "September, 2026",
+      "scope": "Graph theory, network flow algorithms, linear programming. (Waterloo)",
+      "syllabusUrl": ""
+    },
+    {
+      "icon": "https://upload.wikimedia.org/wikipedia/en/thumb/6/6e/University_of_Waterloo_seal.svg/1280px-University_of_Waterloo_seal.svg.png",
+      "focusArea": "Corporate Finance & Valuation",
+      "completionDate": "December, 2025",
+      "scope": "Advanced asset pricing, capital structure diagnostics, risk modeling. (Laurier)",
+      "syllabusUrl": ""
+    },
+    {
+      "icon": "https://realwebsite.com/laurier_logo_64x64",
+      "focusArea": "Strategic Management",
+      "completionDate": "May, 2026",
+      "scope": "Market entry, competitive paradigm analysis, execution modeling. (Laurier)",
+      "syllabusUrl": ""
+    }
+  ]
+}

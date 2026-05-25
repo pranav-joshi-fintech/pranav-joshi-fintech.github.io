@@ -2,10 +2,1002 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="0; url=https://pranav-joshi.notion.site/Portfolio-13b27f27fb57808da917c0dbd555f223?pvs=4">
-    <title>Redirecting...</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brief | Pranav Joshi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght=300;400;500;600;700&family=Playfair+Display:ital,wght=0,500;1,400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F8F6F2;
+            color: #1A1A1A;
+            line-height: 1.6;
+        }
+        .font-serif { font-family: 'Playfair Display', serif; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        .page-view { display: none; }
+        .page-view.active { display: block; }
+
+        .slider-mask {
+            mask-image: linear-gradient(to right, transparent, white 10%, white 90%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, white 10%, white 90%, transparent);
+        }
+
+        /* HARDWARE ACCELERATED REVEAL PARALLAX CARDS */
+        .premium-card {
+            background-color: #FFFFFF;
+            border: 1.5px solid #E5E2DD;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 440px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                        box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                        transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: transform, box-shadow;
+        }
+        
+        .card-image-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 185px;
+            background-size: cover;
+            background-position: center;
+            z-index: 10;
+            border-bottom: 1px solid #E5E2DD;
+            background-color: #F3EFE9;
+        }
+
+        /* The cover panel that hides the text when not hovered */
+        .card-cover-panel {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: calc(100% - 185px);
+            background-color: #FFFFFF;
+            z-index: 15;
+            display: none;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: transform;
+        }
+
+        .card-sliding-content {
+            position: relative;
+            z-index: 30;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            justify-content: space-between;
+            padding: 24px;
+            padding-top: 200px;
+        }
+
+        .card-moving-group {
+            transform: translateY(0);
+            transition: none;
+            will-change: auto;
+        }
+
+        .card-fixed-bottom {
+            background-color: #FFFFFF;
+            padding-top: 12px;
+            border-top: 1px solid #E5E2DD;
+            z-index: 30;
+        }
+
+        /* Hover Reveal Dynamics */
+        .premium-card:hover {
+            border-color: #1A1A1A;
+            box-shadow: 0 30px 60px rgba(26, 26, 26, 0.08);
+            transform: scale(1.02);
+        }
+        /* Keep inner content static on hover to avoid layout shifts */
+        .premium-card:hover .card-moving-group {
+            transform: translateY(0);
+        }
+        .premium-card:hover .card-cover-panel {
+            transform: none;
+        }
+
+        /* INDICATOR CONTROLS */
+        .instagram-track-pill {
+            width: 64px;
+            height: 10px;
+            background-color: #E5E2DD;
+            border-radius: 6px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.15s ease;
+        }
+        .instagram-track-pill:hover {
+            transform: none;
+        }
+        .instagram-fill-progress {
+            width: 0%;
+            height: 100%;
+            background-color: #1A1A1A;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .instagram-track-pill.active-indicator .instagram-fill-progress {
+            width: 100%;
+        }
+
+        @keyframes directOomphFlash {
+            0% { transform: scale(1); }
+            30% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        .tactile-click-flash {
+            animation: directOomphFlash 0.24s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        /* COMPLEX TIMELINE STRUCTURAL COMPONENTS */
+        .timeline-wrapper-row {
+            display: flex;
+            position: relative;
+            gap: 24px;
+            align-items: start;
+        }
+        .timeline-left-gutter {
+            width: 16px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-self: stretch;
+            flex-shrink: 0;
+        }
+        .timeline-geometric-line {
+            width: 2px;
+            background-color: #E5E2DD;
+            position: absolute;
+            top: 36px;
+            bottom: -24px;
+            left: 7px;
+            z-index: 1;
+        }
+        .timeline-wrapper-row.last-row-node .timeline-geometric-line {
+            display: none;
+        }
+        .timeline-geometric-circle {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background-color: #C9C5BE;
+            position: absolute;
+            top: 28px;
+            left: 1px;
+            z-index: 5;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease;
+        }
+        /* Nested Sub-Project Styling */
+        .timeline-wrapper-row.is-nested .timeline-content-pane {
+            margin-left: 36px;
+        }
+        .timeline-wrapper-row.is-nested .timeline-geometric-circle {
+            width: 10px;
+            height: 10px;
+            left: 3px;
+            top: 30px;
+        }
+        .timeline-content-pane {
+            flex-grow: 1;
+            background-color: #FFFFFF;
+            border: 1.5px solid #E5E2DD;
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* HOVER INTERACTION STYLES */
+        .timeline-wrapper-row.theme-experience:hover .timeline-content-pane {
+            background-color: #F4C430;
+            border-color: #F4C430;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(244, 196, 48, 0.12);
+        }
+        .timeline-wrapper-row.theme-project:hover .timeline-content-pane {
+            background-color: #22C55E;
+            border-color: #22C55E;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(34, 197, 94, 0.12);
+        }
+        .timeline-wrapper-row:hover .timeline-content-pane * {
+            color: #1A1A1A !important;
+        }
+        .timeline-wrapper-row.theme-experience:hover .timeline-geometric-circle {
+            transform: scale(1.25);
+            background-color: #F4C430 !important;
+        }
+        .timeline-wrapper-row.theme-project:hover .timeline-geometric-circle {
+            transform: scale(1.25);
+            background-color: #22C55E !important;
+        }
+
+        /* DETAILS DRAWER SLIDERS */
+        .details-drawer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
+            opacity: 0;
+        }
+        .details-drawer.open {
+            max-height: 500px;
+            opacity: 1;
+        }
+
+        a:focus-visible, button:focus-visible {
+            outline: 3px solid #005A9C;
+            outline-offset: 4px;
+        }
+        /* Spotlight label and explore button styles */
+        .spotlight-label { letter-spacing: 0.06em; }
+        .explore-btn {
+            transition: transform 0.12s ease, box-shadow 0.12s ease, background-color 0.12s ease, color 0.12s ease, border-color 0.12s ease;
+            will-change: transform, box-shadow;
+            border: 1px solid #1A1A1A;
+        }
+        .explore-btn:hover {
+            /*transform: translateY(-3px);*/
+            /*box-shadow: 0 8px 20px rgba(0,0,0,0.12);*/
+            background-color: #22C55E !important;
+            color: #FFFFFF !important;
+            border-color: #1A1A1A !important;
+        }
+        .explore-btn:active {
+            transform: translateY(0) scale(0.985);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        }
+        .explore-btn:focus-visible { outline: 3px solid #002d5a; outline-offset: 3px; }
+    </style>
 </head>
-<body>
-    <p>If you are not redirected, <a href="https://pranav-joshi.notion.site/Portfolio-13b27f27fb57808da917c0dbd555f223?pvs=4">click here</a>.</p>
+<body class="selection:bg-[#005A9C] selection:text-white min-h-screen flex flex-col justify-between overflow-x-hidden">
+
+    <header class="w-full h-52 bg-[#F3EFE9] border-b border-[#E5E2DD] relative overflow-hidden pt-4" id="integrated-nav-zone">
+        <canvas id="navChartCanvas" class="absolute inset-0 w-full h-full block cursor-crosshair z-0"></canvas>
+        
+        <nav class="max-w-5xl mx-auto px-6 h-full flex justify-between items-end pb-10 text-xs tracking-widest uppercase font-semibold relative z-10 select-none pointer-events-none">
+            <a href="#brief" onclick="routeTo('brief')" id="site-logo" class="font-serif capitalize text-xl tracking-normal font-bold text-[#1A1A1A] hover:opacity-60 transition-opacity pointer-events-auto">
+                Pranav Joshi
+            </a>
+            <div class="space-x-8 flex items-center pointer-events-auto" id="nav-links-box">
+                <a href="#qualifications" onclick="routeTo('qualifications')" class="nav-link hover:text-black transition-colors text-neutral-400 py-1" id="link-qualifications">qualifications</a>
+                <a href="#timeline" onclick="routeTo('timeline')" class="nav-link hover:text-black transition-colors text-neutral-400 py-1" id="link-timeline">timeline</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-6 flex-grow w-full mt-12">
+        
+        <section id="brief" class="page-view active space-y-12">
+            <div id="project-slider-wrapper" class="relative space-y-4 hidden">
+                <div class="slider-mask">
+                    <div id="project-slider" class="flex overflow-x-auto snap-x snap-mandatory gap-6 no-scrollbar pb-6 pt-4 px-[8vw] md:px-[15vw]">
+                    </div>
+                </div>
+                
+                <div class="max-w-md mx-auto flex flex-col items-center justify-center gap-3 select-none">
+                    <span id="slider-hint-text" class="text-[10px] font-mono uppercase tracking-widest text-neutral-400 font-bold">
+                    </span>
+                    <div id="slider-track-indicators" class="flex gap-4">
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-12 items-start pt-6">
+                <div class="md:col-span-2 space-y-6">
+                    <h2 id="brief-section-heading" class="text-[10px] uppercase tracking-widest text-neutral-400 font-bold"></h2>
+                    <p id="payload-monologue" class="font-serif text-2xl text-neutral-900 leading-relaxed italic"></p>
+                    <p id="payload-bio" class="text-neutral-600 leading-relaxed text-sm max-w-xl font-light"></p>
+                </div>
+
+                <div id="payload-degrees" class="bg-white border border-[#E5E2DD] rounded-xl p-6 space-y-4 md:mt-8 shadow-2xs">
+                </div>
+            </div>
+
+            <div id="payload-socials" class="pt-8 border-t border-[#E5E2DD] flex flex-wrap justify-center items-center gap-x-12 gap-y-4 text-xs font-mono tracking-widest uppercase text-neutral-600 pb-16">
+            </div>
+        </section>
+
+        <section id="qualifications" class="page-view space-y-12">
+            <div class="space-y-1">
+                <span class="text-[10px] font-mono uppercase tracking-widest text-neutral-400 font-bold">Dossier II</span>
+                <h2 id="qualifications-main-heading" class="text-3xl font-serif text-neutral-900"></h2>
+            </div>
+
+            <div class="space-y-4">
+                <h3 id="distinctions-subheading" class="text-[10px] uppercase tracking-widest text-neutral-400 font-bold"></h3>
+                <div id="payload-distinctions" class="grid gap-4 w-full">
+                </div>
+            </div>
+
+            <div class="space-y-6 pt-6">
+                <h3 id="education-subheading" class="text-[10px] uppercase tracking-widest text-neutral-400 font-bold"></h3>
+                <div id="payload-education" class="grid gap-4 w-full">
+                </div>
+            </div>
+        </section>
+
+        <section id="timeline" class="page-view space-y-12">
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+                <div class="space-y-1">
+                    <span class="text-[10px] font-mono uppercase tracking-widest text-neutral-400 font-bold">Dossier III</span>
+                    <h2 class="text-3xl font-serif text-neutral-900">Historical log & execution</h2>
+                </div>
+                <div class="flex items-center gap-4">
+                    <div class="flex items-center gap-2">
+                        <label for="timeline-sort" class="text-[10px] font-mono uppercase tracking-wider text-neutral-400 font-bold">Sort Schema:</label>
+                        <select id="timeline-sort" onchange="applyTimelineFilters()" class="text-xs font-mono uppercase font-bold tracking-tight bg-white border border-[#E5E2DD] text-neutral-800 rounded-md px-3 py-1.5 focus:outline-none focus:border-neutral-900">
+                            <option value="desc">NEWEST FIRST</option>
+                            <option value="asc">OLDEST FIRST</option>
+                        </select>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <label for="timeline-filter" class="text-[10px] font-mono uppercase tracking-wider text-neutral-400 font-bold">Filter Schema:</label>
+                        <select id="timeline-filter" onchange="applyTimelineFilters()" class="text-xs font-mono uppercase font-bold tracking-tight bg-white border border-[#E5E2DD] text-neutral-800 rounded-md px-3 py-1.5 focus:outline-none focus:border-neutral-900">
+                            <option value="all">ALL METRICS</option>
+                            <option value="experiences">EXPERIENCES ONLY</option>
+                            <option value="projects">PROJECTS ONLY</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div id="payload-timeline" class="space-y-0">
+            </div>
+        </section>
+
+    </main>
+
+    <div class="mt-24 border-t border-[#E5E2DD]"></div>
+
+    <script>
+        let activeSliderIndex = 0;
+        let originalTimelineCache = [];
+        let currentFilterMode = 'all';
+
+        function routeTo(pageId) {
+            document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('text-black', 'font-bold'));
+            
+            const targetPage = document.getElementById(pageId);
+            if(targetPage) {
+                targetPage.classList.add('active');
+                const targetLink = document.getElementById(`link-${pageId}`);
+                if(targetLink) targetLink.classList.add('text-black', 'font-bold');
+                
+                let titleString = "Brief";
+                if(pageId === 'qualifications') titleString = "Qualifications";
+                if(pageId === 'timeline') titleString = "Timeline";
+                
+                document.title = `${titleString} | Pranav Joshi`;
+                window.location.hash = pageId;
+                // Ensure page top is visible after route changes
+                window.scrollTo(0,0);
+                setTimeout(() => {
+                    window.scrollTo(0,0);
+                    document.body.scrollTop = 0;
+                    document.documentElement.scrollTop = 0;
+                }, 50);
+            }
+        }
+
+        window.addEventListener('hashchange', () => {
+            const currentHash = window.location.hash.replace('#', '');
+            if(['brief', 'qualifications', 'timeline'].includes(currentHash)) {
+                routeTo(currentHash);
+            }
+        });
+
+        function toggleExperienceDrawer(index) {
+            const drawer = document.getElementById(`drawer-${index}`);
+            const btn = document.getElementById(`drawer-btn-${index}`);
+            const indicator = document.getElementById(`arrow-indicator-${index}`);
+            if (drawer.classList.contains('open')) {
+                drawer.classList.remove('open');
+                if (btn) btn.style.backgroundColor = '';
+                if (indicator) indicator.style.transform = 'rotate(0deg)';
+            } else {
+                drawer.classList.add('open');
+                if (btn) btn.style.backgroundColor = '#FFFFFF';
+                if (indicator) indicator.style.transform = 'rotate(180deg)';
+            }
+        }
+
+        function handleUserSliderInteraction(clickedIdx) {
+            // Simple behavior: just select the target pill (no flash animation)
+            forceTargetSlideSelection(clickedIdx);
+        }
+
+        function forceTargetSlideSelection(idx) {
+            activeSliderIndex = idx;
+            updateActiveIndicatorState(idx);
+            snapSliderTo(idx);
+        }
+
+        function updateActiveIndicatorState(activeIdx) {
+            document.querySelectorAll('.instagram-track-pill').forEach((pill, idx) => {
+                if(idx === activeIdx) {
+                    pill.classList.add('active-indicator');
+                } else {
+                    pill.classList.remove('active-indicator');
+                }
+            });
+        }
+
+        function snapSliderTo(idx) {
+            const wrapper = document.getElementById('project-slider');
+            if(!wrapper) return;
+            const targetCards = wrapper.querySelectorAll('.premium-card');
+            if(targetCards[idx]) {
+                const targetCoordinateX = targetCards[idx].offsetLeft - (wrapper.offsetWidth - targetCards[idx].offsetWidth) / 2;
+                wrapper.scrollTo({ left: targetCoordinateX, behavior: 'smooth' });
+            }
+        }
+
+        function applyTimelineFilters() {
+            const filterMode = document.getElementById('timeline-filter').value;
+            const sortMode = document.getElementById('timeline-sort').value;
+            // Filter
+            let workingSet = originalTimelineCache.filter(item => {
+                if(filterMode === 'experiences') return item.type === 'experience';
+                if(filterMode === 'projects') return item.type === 'project';
+                return true;
+            }).map(item => ({ ...item }));
+
+            // If only projects are requested, promote nested subprojects to full cards
+            if (filterMode === 'projects') {
+                workingSet = workingSet.map(it => {
+                    if (it.type === 'project' && it.isNested) {
+                        return { ...it, isNested: false, promotedFromParent: it.parentRole || '' };
+                    }
+                    return it;
+                });
+            }
+
+            // Sort primarily by groupDate (so experiences and their nested projects stay together), then by internalDate within group
+            function getGroupTime(item) {
+                return new Date(item.groupDate || item.internalDate).getTime();
+            }
+
+            workingSet.sort((a, b) => {
+                const ga = getGroupTime(a);
+                const gb = getGroupTime(b);
+                if (ga !== gb) return sortMode === 'desc' ? gb - ga : ga - gb;
+
+                // Same group: ensure experience node is listed before its nested projects
+                if (a.groupKey && a.groupKey === b.groupKey) {
+                    if (a.type === 'experience' && b.type !== 'experience') return -1;
+                    if (b.type === 'experience' && a.type !== 'experience') return 1;
+                }
+
+                const ia = new Date(a.internalDate).getTime();
+                const ib = new Date(b.internalDate).getTime();
+                return sortMode === 'desc' ? ib - ia : ia - ib;
+            });
+
+            renderTimelineDataGrid(workingSet);
+        }
+
+        function renderTimelineDataGrid(itemsArray) {
+            let timelineMarkup = '';
+            const lengthCount = itemsArray.length;
+
+            if(lengthCount === 0) {
+                document.getElementById('payload-timeline').innerHTML = `
+                <div class="text-center font-mono text-xs text-neutral-400 py-12 border border-dashed border-[#E5E2DD] rounded-xl">
+                    No matching log elements located.
+                </div>`;
+                return;
+            }
+
+            itemsArray.forEach((event, index) => {
+                const isLastNode = (index === lengthCount - 1);
+                const blockThemeClass = (event.type === 'project') ? 'theme-project' : 'theme-experience';
+                const pillLabelTag = (event.type === 'project') ? 'PROJECT' : 'EXPERIENCE';
+                const tagColorClass = (event.type === 'project') ? 'bg-green-100 text-green-800' : 'bg-amber-100 text-amber-800';
+                const nestedClass = event.isNested ? 'is-nested' : '';
+
+                const optionalRedirectButton = event.actionUrl 
+                    ? `<a href="${event.actionUrl}" target="_blank" class="inline-flex items-center gap-1.5 text-[10px] font-mono font-bold uppercase tracking-widest text-neutral-600 border border-neutral-200 bg-white hover:bg-neutral-2 hover:text-white px-3 py-1.5 rounded-md transition-all shadow-3xs">
+                        <span>Launch Case ↗</span>
+                       </a>`
+                    : '';
+
+                timelineMarkup += `
+                <div class="timeline-wrapper-row ${blockThemeClass} ${nestedClass} ${isLastNode ? 'last-row-node' : ''}">
+                    <div class="timeline-left-gutter">
+                        <div class="timeline-geometric-circle"></div>
+                        <div class="timeline-geometric-line"></div>
+                    </div>
+                    
+                    <div class="timeline-content-pane mb-6">
+                        <div class="space-y-2">
+                            <div class="flex flex-wrap items-baseline justify-between gap-2">
+                                <div class="flex items-center gap-3">
+                                    <h3 class="text-base font-serif font-bold text-neutral-900 transition-colors">${event.mainHeading}</h3>
+                                    <span class="text-[8px] font-mono font-black tracking-widest px-2 py-0.5 rounded-sm select-none ${tagColorClass}">
+                                        ${pillLabelTag}
+                                    </span>
+                                </div>
+                                <span class="text-[10px] font-mono text-neutral-400 font-bold uppercase tracking-wider transition-colors">${event.displayDate}</span>
+                            </div>
+                            <div class="text-[10px] font-mono text-neutral-600 uppercase tracking-widest font-bold transition-colors">${event.subHeading}</div>
+                            
+                            <div class="pt-2 flex flex-wrap items-center gap-2">
+                                <button id="drawer-btn-${index}" onclick="toggleExperienceDrawer(${index})" class="inline-flex items-center gap-2 text-[10px] font-mono font-bold uppercase tracking-widest text-neutral-500 hover:text-black transition-colors bg-neutral-50 px-3 py-1.5 rounded-md border border-neutral-200 shadow-3xs transition-all">
+                                    <span>Details Spectrum</span>
+                                    <svg id="arrow-indicator-${index}" class="w-3 h-3 transform transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/>
+                                    </svg>
+                                </button>
+                                ${optionalRedirectButton}
+                            </div>
+
+                            <div id="drawer-${index}" class="details-drawer">
+                                <div class="border border-[#E5E2DD] bg-[#FFFFFF] rounded-xl p-4 mt-3 shadow-3xs">
+                                    <p class="text-xs text-neutral-500 leading-relaxed font-light max-w-2xl transition-colors font-mono" style="font-family: Consolas, 'Courier New', monospace;">${event.details}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>`;
+            });
+            document.getElementById('payload-timeline').innerHTML = timelineMarkup;
+        }
+
+        async function fetchWorkspacePayload(fileName) {
+            const res = await fetch(`data/${fileName}.json`);
+            if(!res.ok) throw new Error(`CRITICAL SYSTEM HALT: Missing ${fileName}.json file in data/ root.`);
+            return await res.json();
+        }
+
+        async function runtimeHydrationSystem() {
+            // Strictly fetch from files with zero fallback mechanisms
+            const configs = await fetchWorkspacePayload('app_config');
+            const brief = await fetchWorkspacePayload('brief');
+            const quals = await fetchWorkspacePayload('qualifications');
+            const exec = await fetchWorkspacePayload('timeline');
+
+            // Flatten and Map Data Architecture with grouping so subprojects stay with their parent
+            let flattenedTimeline = [];
+            let groupCounter = 0;
+
+            // 1. Process Standalone Projects (each is its own group)
+            if (exec.projects) {
+                exec.projects.forEach(p => {
+                    flattenedTimeline.push({
+                        type: 'project',
+                        isNested: false,
+                        mainHeading: p.title,
+                        subHeading: `STANDALONE // ${p.stack}`,
+                        details: p.details,
+                        displayDate: p.displayDate,
+                        internalDate: p.internalDate,
+                        actionUrl: p.actionUrl,
+                        groupKey: null,
+                        groupDate: p.internalDate
+                    });
+                });
+            }
+
+            // 2. Process Experiences & Sub-Projects (each experience forms a group)
+            if (exec.experiences) {
+                exec.experiences.forEach(exp => {
+                    const groupKey = `exp-${groupCounter++}`;
+                    // Push Main Experience (group leader)
+                    flattenedTimeline.push({
+                        type: 'experience',
+                        isNested: false,
+                        mainHeading: exp.role,
+                        subHeading: exp.organization,
+                        details: exp.details,
+                        displayDate: exp.displayDate,
+                        internalDate: exp.internalDate,
+                        actionUrl: exp.verificationUrl,
+                        groupKey: groupKey,
+                        groupDate: exp.internalDate
+                    });
+
+                    // Push Nested Projects as grouped entries
+                    if (exp.nestedProjects) {
+                        exp.nestedProjects.forEach(np => {
+                            flattenedTimeline.push({
+                                type: 'project',
+                                isNested: true,
+                                mainHeading: np.title,
+                                subHeading: `↳ DEPLOYED VIA: ${exp.organization.split('/')[0]} // ${np.stack}`,
+                                details: np.details,
+                                displayDate: np.displayDate,
+                                internalDate: np.internalDate,
+                                parentRole: exp.role,
+                                parentOrganization: exp.organization,
+                                groupKey: groupKey,
+                                groupDate: exp.internalDate
+                            });
+                        });
+                    }
+                });
+            }
+
+            originalTimelineCache = flattenedTimeline;
+
+            if (configs && configs.navigation) {
+                const qualNav = document.getElementById('link-qualifications');
+                const timeNav = document.getElementById('link-timeline');
+                if (qualNav && configs.navigation.intelLabel) qualNav.innerText = configs.navigation.intelLabel;
+                if (timeNav && configs.navigation.executionLabel) timeNav.innerText = configs.navigation.executionLabel;
+            }
+
+            const sectionHeadingNode = document.getElementById('brief-section-heading');
+            if (sectionHeadingNode && brief.sectionHeading) {
+                if (brief.showProjects === false) {
+                    sectionHeadingNode.style.display = 'none';
+                } else {
+                    sectionHeadingNode.style.display = '';
+                    sectionHeadingNode.innerText = brief.sectionHeading.toUpperCase();
+                }
+            }
+
+            document.getElementById('payload-monologue').innerText = brief.monologue;
+            document.getElementById('payload-bio').innerText = brief.bio;
+
+            const sliderHint = document.getElementById('slider-hint-text');
+            if (sliderHint && brief.swipeHintText) sliderHint.innerText = brief.swipeHintText;
+            
+            let degreeMarkup = '';
+            if (brief.degrees && brief.degrees.length > 0) {
+                brief.degrees.forEach((deg, idx) => {
+                    const colorCircleClass = (deg.color === 'yellow') ? 'bg-[#F4C430]' : 'bg-[#6A0DAD]';
+                    const borderDivider = (idx < brief.degrees.length - 1) ? '<div class="border-t border-neutral-100 my-2"></div>' : '';
+                    degreeMarkup += `
+                    <div class="flex items-start gap-3">
+                        <div class="w-2.5 h-2.5 rounded-full mt-1.5 shrink-0 ${colorCircleClass}"></div>
+                        <div>
+                            <div class="font-bold text-neutral-900 text-sm tracking-tight">${deg.major}</div>
+                            <div class="text-xs text-neutral-500 font-medium">@ ${deg.institution}</div>
+                        </div>
+                    </div>${borderDivider}`;
+                });
+                degreeMarkup += `
+                <div class="pt-2">
+                    <span class="text-[9px] uppercase tracking-widest font-mono bg-[#1A1A1A] text-white px-3 py-1 inline-block font-bold rounded-sm">
+                        Double Degree
+                    </span>
+                </div>`;
+            }
+            document.getElementById('payload-degrees').innerHTML = degreeMarkup;
+
+            let socialsMarkup = '';
+            for(const [platform, targetUrl] of Object.entries(brief.socials)) {
+                socialsMarkup += `<a href="${targetUrl}" class="text-neutral-700 hover:text-black font-semibold transition-colors underline-offset-4 hover:underline py-1">${platform.toUpperCase()}</a>`;
+            }
+            document.getElementById('payload-socials').innerHTML = socialsMarkup;
+
+            const sliderWrapperNode = document.getElementById('project-slider-wrapper');
+            // Strict boolean check 
+            if (brief.showProjects === true && exec.projects && Object.keys(exec.projects).length > 0) {
+                sliderWrapperNode.classList.remove('hidden');
+                
+                let sliderMarkup = '';
+                let trackMarkup = '';
+                
+                const activeShowcaseArray = exec.topShowcaseProjectIds || (Array.isArray(exec.projects) ? exec.projects.map(p => p.id) : Object.keys(exec.projects));
+
+                activeShowcaseArray.forEach((projId, index) => {
+                    let proj = null;
+                    if (Array.isArray(exec.projects)) {
+                        proj = exec.projects.find(p => p.id === projId) || exec.projects[projId];
+                    } else {
+                        proj = exec.projects[projId];
+                    }
+                    if(!proj) return;
+                    
+                    const projectActionText = brief.ctaText || "Explore Framework";
+                    const projectIcon = proj.icon || "https://img.icons8.com/ios-filled/100/1A1A1A/code.png";
+
+                    sliderMarkup += `
+                    <div class="snap-center shrink-0 w-[84vw] md:w-[460px] premium-card select-none" 
+                         onclick="if(activeSliderIndex !== ${index}) { handleUserSliderInteraction(${index}); }">
+                        <div class="card-image-canvas" style="background-image: url('${proj.imgUrl}')"></div>
+                        <div class="card-cover-panel"></div>
+                        
+                        <div class="card-sliding-content">
+                            <div class="space-y-3 card-moving-group">
+                                <div class="flex items-center justify-between gap-4">
+                                    <span class="text-[9px] font-mono uppercase tracking-widest text-neutral-400 font-bold block spotlight-label">SPOTLIGHT ${projId} // ${proj.category}</span>
+                                                    <div class="w-9 h-9 rounded-md bg-neutral-50 border border-neutral-100 p-1 flex items-center justify-center shrink-0 select-none">
+                                                        <img src="${projectIcon}" class="w-full h-full object-contain" alt="Icon" onerror="this.style.display='none'">
+                                                    </div>
+                                </div>
+                                <h3 class="text-lg font-serif text-neutral-900 font-medium tracking-tight">${proj.title}</h3>
+                                <p class="text-neutral-500 text-xs leading-relaxed font-light">${proj.details || proj.description || ''}</p>
+                            </div>
+                            
+                            <div class="flex items-center justify-between card-fixed-bottom w-full mt-auto">
+                                <span class="text-[9px] font-mono text-neutral-400 tracking-wider font-semibold uppercase">${proj.stack}</span>
+                                <a href="${proj.actionUrl || '#'}" onclick="event.stopPropagation();" class="inline-flex items-center gap-1 text-[9px] font-mono font-bold uppercase tracking-widest text-white bg-neutral-900 hover:bg-neutral-800 px-3 py-2 rounded-md transition-all relative z-50 explore-btn">
+                                    ${projectActionText} ↗
+                                </a>
+                            </div>
+                        </div>
+                    </div>`;
+                    
+                    trackMarkup += `
+                    <div onclick="handleUserSliderInteraction(${index});" class="instagram-track-pill ${index === 0 ? 'active-indicator' : ''}" id="track-pill-${index}" aria-label="Go to card ${index+1}">
+                        <div class="instagram-fill-progress"></div>
+                    </div>`;
+                });
+                
+                const sliderContainer = document.getElementById('project-slider');
+                sliderContainer.innerHTML = sliderMarkup + `<div class="shrink-0 w-[10vw] md:w-[25vw]"></div>`;
+                document.getElementById('slider-track-indicators').innerHTML = trackMarkup;
+
+                sliderContainer.addEventListener('scroll', () => {
+                    const centerPoint = sliderContainer.scrollLeft + (sliderContainer.offsetWidth / 2);
+                    sliderContainer.querySelectorAll('.premium-card').forEach((card, idx) => {
+                        if(card.offsetLeft <= centerPoint && (card.offsetLeft + card.offsetWidth) >= centerPoint) {
+                            if (activeSliderIndex !== idx) {
+                                activeSliderIndex = idx;
+                                updateActiveIndicatorState(idx);
+                            }
+                        }
+                    });
+                }, { passive: true });
+            } else {
+                if(sliderWrapperNode) sliderWrapperNode.classList.add('hidden');
+            }
+
+            const distHeadingNode = document.getElementById('distinctions-subheading');
+            const eduHeadingNode = document.getElementById('education-subheading');
+            const qualMainHeadingNode = document.getElementById('qualifications-main-heading');
+            
+            if (qualMainHeadingNode) qualMainHeadingNode.innerText = "Qualifications";
+            if (quals.distinctionsHeading && distHeadingNode) distHeadingNode.innerText = quals.distinctionsHeading.toUpperCase();
+            if (quals.educationHeading && eduHeadingNode) eduHeadingNode.innerText = quals.educationHeading.toUpperCase();
+
+            let distinctionsMarkup = '';
+            if(quals.distinctions && quals.distinctions.length > 0) {
+                quals.distinctions.forEach(d => {
+                    const buttonElement = (d.verificationUrl && d.verificationUrl !== "#" && d.verificationUrl !== "") 
+                        ? `<a href="${d.verificationUrl}" target="_blank" class="inline-flex items-center gap-1.5 text-[10px] font-mono font-bold uppercase tracking-widest text-neutral-600 border border-[#E5E2DD] bg-white hover:bg-neutral-900 hover:text-white px-4 py-2 rounded-lg transition-all shadow-3xs w-fit">Show credential ↗</a>` 
+                        : '';
+                    const iconMarkup = d.icon ? `<img src="${d.icon}" alt="icon" class="w-full h-full object-contain">` : '🏅';
+                    distinctionsMarkup += `
+                    <div class="premium-card !h-auto rounded-2xl p-6 flex flex-col sm:flex-row gap-5 items-start cursor-default">
+                        <div class="w-16 h-16 rounded-xl bg-neutral-50 border border-neutral-100 flex items-center justify-center shrink-0 text-xl font-mono shadow-3xs select-none overflow-hidden">
+                            ${iconMarkup}
+                        </div>
+                        <div class="space-y-3 w-full flex flex-col justify-between md:flex-row md:items-start">
+                            <div class="space-y-2">
+                                <h4 class="text-base font-bold text-neutral-900">${d.title}</h4>
+                                <p class="text-xs text-neutral-500 font-light max-w-2xl leading-relaxed">${d.detail}</p>
+                                <div class="pt-1">${buttonElement}</div>
+                            </div>
+                            <span class="font-mono text-xs text-neutral-400 font-bold bg-neutral-100/80 px-2.5 py-1 rounded sm:text-right mt-1 select-none whitespace-nowrap">${d.year}</span>
+                        </div>
+                    </div>`;
+                });
+            }
+            document.getElementById('payload-distinctions').innerHTML = distinctionsMarkup;
+
+            let educationMarkup = '';
+            if(quals.educationTracks && quals.educationTracks.length > 0) {
+                quals.educationTracks.forEach(track => {
+                    const buttonElement = (track.syllabusUrl && track.syllabusUrl !== "#" && track.syllabusUrl !== "") 
+                        ? `<a href="${track.syllabusUrl}" target="_blank" class="inline-flex items-center gap-1.5 text-[10px] font-mono font-bold uppercase tracking-widest text-neutral-600 border border-[#E5E2DD] bg-white hover:bg-neutral-900 hover:text-white px-4 py-2 rounded-lg transition-all shadow-3xs w-fit">View Syllabus Primitives ↗</a>` 
+                        : '';
+
+                    const iconSrc = track.icon || 'https://img.icons8.com/ios-filled/100/1A1A1A/education.png';
+                    educationMarkup += `
+                    <div class="premium-card !h-auto rounded-2xl p-6 flex flex-col sm:flex-row gap-5 items-start cursor-default">
+                        <div class="w-16 h-16 rounded-xl bg-neutral-50 border border-neutral-100 flex items-center justify-center shrink-0 shadow-3xs p-2.5 overflow-hidden">
+                            <img src="${iconSrc}" alt="Focus logo" class="w-full h-full object-contain" onerror="this.src='https://img.icons8.com/ios-filled/100/1A1A1A/education.png'">
+                        </div>
+                        <div class="space-y-3 w-full flex flex-col justify-between md:flex-row md:items-start">
+                            <div class="space-y-2">
+                                <h4 class="text-base font-bold text-neutral-900">${track.focusArea}</h4>
+                                <p class="text-xs text-neutral-500 font-light max-w-2xl leading-relaxed">${track.scope}</p>
+                                <div class="pt-1">${buttonElement}</div>
+                            </div>
+                            <span class="font-mono text-xs text-neutral-400 font-bold bg-neutral-100/80 px-3 py-1.5 rounded sm:text-right mt-1 select-none whitespace-nowrap">${track.completionDate}</span>
+                        </div>
+                    </div>`;
+                });
+            }
+            document.getElementById('payload-education').innerHTML = educationMarkup;
+
+            applyTimelineFilters();
+
+            const urlHash = window.location.hash.replace('#', '');
+            routeTo(['brief', 'qualifications', 'timeline'].includes(urlHash) ? urlHash : 'brief');
+            setTimeout(trackingNavObstacles, 100);
+        }
+
+        /******************************************************************
+         * INTERACTIVE HEADER BACKGROUND PHYSICS RESISTOR ENGINE
+         ******************************************************************/
+        const canvasObj = document.getElementById('navChartCanvas');
+        const ctxNode = canvasObj.getContext('2d');
+        
+        let pointMatrix = [];
+        let mouseNode = { x: -3000, y: -3000 };
+        let obstacleBoxes = [];
+
+        function recalculateCanvasBoundaries() {
+            const container = document.getElementById('integrated-nav-zone');
+            if(!container) return;
+            canvasObj.width = container.clientWidth;
+            canvasObj.height = container.clientHeight;
+        }
+
+        function trackingNavObstacles() {
+            obstacleBoxes = [];
+            const container = document.getElementById('integrated-nav-zone');
+            if(!container) return;
+            const parentBounds = container.getBoundingClientRect();
+            
+            const logoElem = document.getElementById('site-logo');
+            const linksBox = document.getElementById('nav-links-box');
+            
+            [logoElem, linksBox].forEach(elem => {
+                if(elem) {
+                    const rect = elem.getBoundingClientRect();
+                    obstacleBoxes.push({
+                        left: (rect.left - parentBounds.left) - 24,
+                        right: (rect.right - parentBounds.left) + 24
+                    });
+                }
+            });
+        }
+
+        class CandlePointNode {
+            constructor(x, referenceY) {
+                this.x = x;
+                this.y = referenceY;
+                this.referenceY = referenceY;
+                this.velocityY = 0;
+                this.stiffness = 0.08;
+                this.damping = 0.74;
+                
+                this.bullishColor = "#005A9C";
+                this.bearishColor = "#D4A373";
+                this.neutralColor = "#DEDBD4";
+                this.activeColor = this.neutralColor;
+                this.isBullish = true;
+            }
+
+            calculateVectorPhysics() {
+                let dx = this.x - mouseNode.x;
+                let dy = this.referenceY - mouseNode.y;
+                let range = Math.sqrt(dx*dx + dy*dy);
+                let compression = 0;
+
+                if(range < 160) {
+                    compression = (160 - range) * 0.55;
+                    if(mouseNode.x > this.x) {
+                        this.activeColor = this.bullishColor;
+                        this.isBullish = true;
+                    } else {
+                        this.activeColor = this.bearishColor;
+                        this.isBullish = false;
+                    }
+                } else {
+                    this.activeColor = this.neutralColor;
+                }
+
+                let targetY = this.referenceY - compression;
+                let springError = targetY - this.y;
+                this.velocityY += springError * this.stiffness;
+                this.velocityY *= this.damping;
+                this.y += this.velocityY;
+            }
+        }
+
+        function initializeTrendMatrix() {
+            pointMatrix = [];
+            const spacing = 26;
+            const count = Math.ceil(window.innerWidth / spacing) + 2;
+            let currentTrendY = 85; 
+
+            for(let i = 0; i < count; i++) {
+                currentTrendY += (Math.random() - 0.5) * 14;
+                if(currentTrendY < 55) currentTrendY = 65;
+                if(currentTrendY > 115) currentTrendY = 95;
+                pointMatrix.push(new CandlePointNode(i * spacing, currentTrendY));
+            }
+        }
+
+        function physicalAnimationLoop() {
+            ctxNode.clearRect(0, 0, canvasObj.width, canvasObj.height);
+            pointMatrix.forEach(node => node.calculateVectorPhysics());
+
+            ctxNode.lineWidth = 1.8;
+            ctxNode.strokeStyle = "#E5E2DD";
+            
+            let segmentDrawingActive = false;
+
+            for(let i = 0; i < pointMatrix.length; i++) {
+                const node = pointMatrix[i];
+                let actualCollisionThreat = obstacleBoxes.some(box => node.x >= box.left && node.x <= box.right) && (node.y > 135);
+
+                if (actualCollisionThreat) {
+                    if (segmentDrawingActive) {
+                        ctxNode.stroke();
+                        segmentDrawingActive = false;
+                    }
+                } else {
+                    if (!segmentDrawingActive) {
+                        ctxNode.beginPath();
+                        ctxNode.moveTo(node.x, node.y);
+                        segmentDrawingActive = true;
+                    } else {
+                        const prev = pointMatrix[i - 1];
+                        ctxNode.quadraticCurveTo((prev.x + node.x) / 2, prev.y, node.x, node.y);
+                    }
+                }
+            }
+            if (segmentDrawingActive) ctxNode.stroke();
+
+            pointMatrix.forEach((node, idx) => {
+                if(idx % 2 === 0) {
+                    if(!(obstacleBoxes.some(box => node.x >= box.left && node.x <= box.right) && (node.y > 135))) {
+                        ctxNode.strokeStyle = node.activeColor;
+                        ctxNode.fillStyle = node.activeColor;
+                        ctxNode.lineWidth = 1.5;
+                        ctxNode.beginPath();
+                        ctxNode.moveTo(node.x, node.y - 10);
+                        ctxNode.lineTo(node.x, node.y + 10);
+                        ctxNode.stroke();
+                        
+                        const bodyH = node.isBullish ? 6 : 10;
+                        ctxNode.fillRect(node.x - 2.5, node.y - (bodyH/2), 5, bodyH);
+                    }
+                }
+            });
+
+            requestAnimationFrame(physicalAnimationLoop);
+        }
+
+        window.addEventListener('resize', () => {
+            recalculateCanvasBoundaries();
+            trackingNavObstacles();
+            initializeTrendMatrix();
+        });
+
+        const trackingZone = document.getElementById('integrated-nav-zone');
+        if(trackingZone) {
+            trackingZone.addEventListener('mousemove', (e) => {
+                const boundary = canvasObj.getBoundingClientRect();
+                mouseNode.x = e.clientX - boundary.left;
+                mouseNode.y = e.clientY - boundary.top;
+            });
+
+            trackingZone.addEventListener('mouseleave', () => {
+                mouseNode.x = -3000;
+                mouseNode.y = -3000;
+            });
+        }
+
+        recalculateCanvasBoundaries();
+        trackingNavObstacles();
+        initializeTrendMatrix();
+        physicalAnimationLoop();
+        runtimeHydrationSystem();
+    </script>
 </body>
 </html>
